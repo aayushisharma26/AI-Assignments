@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <h1>Chat</h1>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle-btn" class="icon-btn" title="Toggle light/dark theme">🌙 Dark</button>
+        <button id="clear-chat-btn" class="icon-btn" title="Clear conversation">New chat</button>
+      </div>
+    </header>
+
+    <main id="messages" class="messages" aria-live="polite">
+      <div id="empty-state" class="empty-state">
+        <div class="empty-state-icon">💬</div>
+        <p>Start a conversation whenever you're ready.</p>
+      </div>
+    </main>
+
+    <div id="typing-indicator" class="typing-indicator hidden">
+      <span></span><span></span><span></span>
+    </div>
+
+    <footer class="composer">
+      <textarea
+        id="message-input"
+        placeholder="Message the assistant... (Enter to send, Shift+Enter for new line)"
+        rows="1"
+      ></textarea>
+      <button id="send-btn" class="send-btn" title="Send">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
