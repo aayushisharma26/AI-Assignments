@@ -131,12 +131,21 @@ async function sendMessage() {
   }
 }
 
-function clearChat() {
+async function clearChat() {
+  const previousSessionId = sessionId;
+
   history = [];
   saveHistory(history);
   sessionId = `sess_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
   localStorage.setItem(STORAGE_KEY_SESSION_ID, sessionId);
   renderAll();
+
+  try {
+    await fetch(`${APP_CONFIG.API_BASE_URL}/chat/${previousSessionId}`, { method: "DELETE" });
+  } catch (err) {
+    // Best-effort: the old session is orphaned server-side, but the UI
+    // has already moved on to a fresh session either way.
+  }
 }
 
 sendBtn.addEventListener("click", sendMessage);
